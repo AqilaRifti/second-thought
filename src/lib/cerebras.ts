@@ -128,7 +128,7 @@ export async function analyzePurchase(
 
         loadBalancer.reportSuccess(apiKey);
 
-        const content = response.choices?.[0]?.message?.content || '';
+        const content = (response.choices?.[0]?.message?.content as string) || '';
         return parseAIResponse(content, product);
     } catch (error) {
         loadBalancer.reportError(apiKey);
@@ -153,7 +153,7 @@ export async function analyzePurchase(
                 });
 
                 loadBalancer.reportSuccess(retryKey);
-                const content = response.choices?.[0]?.message?.content || '';
+                const content = (response.choices?.[0]?.message?.content as string) || '';
                 return parseAIResponse(content, product);
             } catch {
                 loadBalancer.reportError(retryKey);
