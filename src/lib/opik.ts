@@ -51,8 +51,11 @@ export class OpikTracker {
             },
         });
 
+        // Generate a trace ID (Opik trace doesn't expose id directly)
+        const traceId = `trace_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+
         return {
-            traceId: trace.id,
+            traceId,
             startTime,
         };
     }

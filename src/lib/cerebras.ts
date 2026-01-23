@@ -128,9 +128,9 @@ export async function analyzePurchase(
 
         loadBalancer.reportSuccess(apiKey);
 
-        const content = response.choices && response.choices[0]?.message?.content
-            ? String(response.choices[0].message.content)
-            : '';
+        // Type-safe extraction of content
+        const firstChoice = Array.isArray(response.choices) ? response.choices[0] : null;
+        const content = firstChoice?.message?.content ? String(firstChoice.message.content) : '';
         return parseAIResponse(content, product);
     } catch (error) {
         loadBalancer.reportError(apiKey);
@@ -155,9 +155,9 @@ export async function analyzePurchase(
                 });
 
                 loadBalancer.reportSuccess(retryKey);
-                const content = response.choices && response.choices[0]?.message?.content
-                    ? String(response.choices[0].message.content)
-                    : '';
+                // Type-safe extraction of content
+                const firstChoice = Array.isArray(response.choices) ? response.choices[0] : null;
+                const content = firstChoice?.message?.content ? String(firstChoice.message.content) : '';
                 return parseAIResponse(content, product);
             } catch {
                 loadBalancer.reportError(retryKey);
