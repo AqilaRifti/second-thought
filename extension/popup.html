@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Thought</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="popup-container">
+        <header class="popup-header">
+            <h1>💭 Second Thought</h1>
+            <p class="tagline">Build wealth, one decision at a time</p>
+        </header>
+
+        <nav class="popup-nav">
+            <button class="nav-btn active" data-tab="dashboard">Dashboard</button>
+            <button class="nav-btn" data-tab="cooldowns">Cool-Downs</button>
+            <button class="nav-btn" data-tab="settings">Settings</button>
+        </nav>
+
+        <!-- Dashboard Tab -->
+        <section id="dashboard" class="tab-content active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="interventions-count">0</div>
+                    <div class="stat-label">Interventions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="saved-amount">$0</div>
+                    <div class="stat-label">Potential Savings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="cooldowns-count">0</div>
+                    <div class="stat-label">Active Cool-Downs</div>
+                </div>
+            </div>
+            <div class="insight-card">
+                <h3>💡 Quick Insight</h3>
+                <p id="daily-insight">Every purchase you pause is a chance to invest in your future.</p>
+            </div>
+        </section>
+
+        <!-- Cool-Downs Tab -->
+        <section id="cooldowns" class="tab-content">
+            <div id="cooldowns-list" class="cooldowns-list">
+                <div class="empty-state">
+                    <span class="empty-icon">⏰</span>
+                    <p>No active cool-downs</p>
+                    <small>When you start a cool-down, it will appear here</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings Tab -->
+        <section id="settings" class="tab-content">
+            <div class="settings-form">
+                <div class="form-group">
+                    <label for="savings-goal">Monthly Savings Goal</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="savings-goal" placeholder="500" min="0">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="monthly-budget">Monthly Budget</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="monthly-budget" placeholder="2000" min="0">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="spending-threshold">
+                        Minimum Price to Analyze
+                        <span class="threshold-value" id="threshold-display">$20</span>
+                    </label>
+                    <input type="range" id="spending-threshold" min="5" max="200" value="20" step="5">
+                </div>
+
+                <div class="form-group">
+                    <label for="financial-goals">Financial Goals</label>
+                    <textarea id="financial-goals" placeholder="e.g., Save for emergency fund, Pay off debt, Invest for retirement"></textarea>
+                </div>
+
+                <div class="form-group toggle-group">
+                    <label for="cooldown-enabled">Enable Cool-Down Reminders</label>
+                    <label class="toggle">
+                        <input type="checkbox" id="cooldown-enabled" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+
+                <button class="save-btn" id="save-settings">Save Settings</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

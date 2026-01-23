@@ -1,0 +1,245 @@
+/* Second Thought - Content Script Styles */
+
+#second-thought-panel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 380px;
+    max-height: 80vh;
+    background: linear-gradient(135deg, #f8fafb 0%, #e0f2fe 100%);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    z-index: 2147483647;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow: hidden;
+    transform: translateX(420px);
+    transition: transform 0.3s ease-out;
+}
+
+#second-thought-panel.visible {
+    transform: translateX(0);
+}
+
+#second-thought-panel * {
+    box-sizing: border-box;
+}
+
+.st-header {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.st-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.st-close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.st-close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.st-content {
+    padding: 20px;
+    overflow-y: auto;
+    max-height: calc(80vh - 60px);
+}
+
+.st-section {
+    margin-bottom: 20px;
+}
+
+.st-section-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #64748b;
+    margin-bottom: 8px;
+}
+
+.st-message {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #1e293b;
+    border-left: 4px solid #3b82f6;
+}
+
+.st-opportunity-cost {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.st-opportunity-cost h3 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: #065f46;
+}
+
+.st-projections {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.st-projection {
+    text-align: center;
+}
+
+.st-projection-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #047857;
+}
+
+.st-projection-label {
+    font-size: 11px;
+    color: #065f46;
+    margin-top: 4px;
+}
+
+.st-warnings {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.st-warning {
+    background: #fef3c7;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.st-warning-icon {
+    font-size: 18px;
+}
+
+.st-warning-text {
+    font-size: 13px;
+    color: #92400e;
+    line-height: 1.4;
+}
+
+.st-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.st-btn {
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.st-btn-primary {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+}
+
+.st-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.st-btn-secondary {
+    background: white;
+    color: #475569;
+    border: 2px solid #e2e8f0;
+}
+
+.st-btn-secondary:hover {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+}
+
+.st-cooldown-timer {
+    background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+}
+
+.st-cooldown-timer h3 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #5b21b6;
+}
+
+.st-timer-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #7c3aed;
+}
+
+.st-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.st-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #e2e8f0;
+    border-top-color: #3b82f6;
+    border-radius: 50%;
+    animation: st-spin 1s linear infinite;
+}
+
+@keyframes st-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.st-loading-text {
+    margin-top: 16px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+    #second-thought-panel {
+        width: calc(100% - 20px);
+        right: 10px;
+        top: 10px;
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "manifest_version": 3,
+    "name": "Second Thought",
+    "version": "1.0.0",
+    "description": "Impulse purchase interceptor - helps you build wealth by analyzing purchases before you buy",
+    "permissions": [
+        "storage",
+        "activeTab",
+        "alarms",
+        "notifications"
+    ],
+    "host_permissions": [
+        "https://*.amazon.com/*",
+        "https://*.ebay.com/*",
+        "https://*.walmart.com/*",
+        "https://*.target.com/*",
+        "https://*.bestbuy.com/*",
+        "https://*.etsy.com/*",
+        "https://*.shopify.com/*",
+        "https://*/*",
+        "http://localhost:3000/*"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Second Thought"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "css": [
+                "content.css"
+            ]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    }
+}
