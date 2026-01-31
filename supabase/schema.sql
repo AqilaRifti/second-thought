@@ -6,7 +6,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- User profiles table
 CREATE TABLE IF NOT EXISTS user_profiles (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id TEXT PRIMARY KEY,
   savings_goal DECIMAL,
   monthly_budget DECIMAL,
   financial_goals TEXT[] DEFAULT '{}',
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS user_profiles (
 -- Cool-down records table
 CREATE TABLE IF NOT EXISTS cooldowns (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  user_id UUID REFERENCES user_profiles(id) ON DELETE CASCADE,
+  user_id TEXT REFERENCES user_profiles(id) ON DELETE CASCADE,
   product_url TEXT NOT NULL,
   product_info JSONB NOT NULL,
   analysis_result JSONB NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS cooldowns (
 -- Intervention history table (for analytics)
 CREATE TABLE IF NOT EXISTS interventions (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  user_id UUID REFERENCES user_profiles(id) ON DELETE CASCADE,
+  user_id TEXT REFERENCES user_profiles(id) ON DELETE CASCADE,
   product_info JSONB NOT NULL,
   analysis_result JSONB NOT NULL,
   user_action TEXT NOT NULL CHECK (user_action IN ('dismissed', 'cooldown_started', 'proceeded')),

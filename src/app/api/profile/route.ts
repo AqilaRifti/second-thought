@@ -45,15 +45,15 @@ export async function POST(request: NextRequest) {
         let profile;
 
         if (userId) {
-            // Update existing profile
+            // Update existing or create with specific ID
             const existing = await userProfileManager.get(userId);
             if (existing) {
                 profile = await userProfileManager.update(userId, profileData);
             } else {
-                profile = await userProfileManager.create(profileData);
+                profile = await userProfileManager.create({ ...profileData, id: userId });
             }
         } else {
-            // Create new profile
+            // Create new profile with auto-generated ID
             profile = await userProfileManager.create(profileData);
         }
 

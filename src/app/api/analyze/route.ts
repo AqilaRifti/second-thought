@@ -19,10 +19,10 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Get user profile if userId provided
+        // Get or create user profile if userId provided
         let userProfile = undefined;
         if (userId) {
-            userProfile = await userProfileManager.get(userId) ?? undefined;
+            userProfile = await userProfileManager.getOrCreate(userId);
         }
 
         // Analyze pricing patterns
