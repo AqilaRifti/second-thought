@@ -1,7 +1,7 @@
 // Second Thought - Background Service Worker
 // Handles API calls and state management
 
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = 'https://second-thought-azure.vercel.app/api';
 
 // Get or create user ID
 async function getUserId() {

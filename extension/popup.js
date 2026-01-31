@@ -1,6 +1,6 @@
 // Second Thought - Popup Script
 
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = 'https://second-thought-azure.vercel.app/api';
 
 // DOM Elements
 const navBtns = document.querySelectorAll('.nav-btn');

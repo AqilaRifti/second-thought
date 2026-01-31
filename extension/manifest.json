@@ -18,7 +18,7 @@
         "https://*.etsy.com/*",
         "https://*.shopify.com/*",
         "https://*/*",
-        "http://localhost:3000/*"
+        "https://second-thought-azure.vercel.app/*"
     ],
     "action": {
         "default_popup": "popup.html",
